@@ -1,0 +1,41 @@
+﻿@using Auth_P331.Areas.Admin.ViewModels.Role
+@model RoleIndexVM
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Roles</h1>
+
+    <a class="btn btn-primary" asp-action="create" asp-controller="role">Create</a>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var role in Model.Roles)
+                        {
+                            <tr>
+                                <td>@role.Name</td>
+                                <td>
+                                    <a asp-action="update" asp-controller="role" asp-route-id="@role.Id" class="btn btn-primary">Update</a>
+                                    <a onclick="return ConfirmDelete()" asp-action="delete" asp-controller="role" asp-route-id="@role.Id" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
